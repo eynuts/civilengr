@@ -97,7 +97,7 @@ const App = () => {
     <>
       <div 
         className="parallax-bg" 
-        style={{ transform: `translateY(-${scrollY * 0.2}px)` }}
+        style={{ transform: `translateY(-${Math.min(scrollY * 0.15, window.innerHeight * 0.2)}px)` }}
       />
       <div className="site-wrapper">
         {/* Navbar */}
