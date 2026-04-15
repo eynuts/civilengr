@@ -13,7 +13,7 @@
   height: 120vh; /* Extra height for moving space */
   background-image: 
     linear-gradient(to bottom, rgba(5, 10, 20, 0.7) 0%, rgba(5, 10, 20, 0.9) 70%, #050a14 100%),
-    url('./assets/bgimage.png');
+    url('./assets/bgimage.webp');
   background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
