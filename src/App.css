@@ -4,6 +4,37 @@
   z-index: 1;
 }
 
+/* Loading Overlay */
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #050a14;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loader-overlay.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.spinner {
+  color: var(--accent);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 /* Parallax Background */
 .parallax-bg {
   position: fixed;

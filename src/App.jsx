@@ -11,16 +11,30 @@ import {
   LayoutDashboard,
   Menu,
   X,
-  ArrowUp
+  ArrowUp,
+  Loader2
 } from 'lucide-react';
+import bgImage from './assets/bgimage.webp';
 import './App.css';
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [scrollY, setScrollY] = useState(0);
   const downloadLink = "https://github.com/eynuts/civilengr/releases/download/v1.0/BuildView.apk";
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = bgImage;
+    if (img.complete) {
+      setIsLoading(false);
+    } else {
+      img.onload = () => setIsLoading(false);
+      img.onerror = () => setIsLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
     const handleScrollReveal = () => {
@@ -95,6 +109,14 @@ const App = () => {
 
   return (
     <>
+      {/* Loading Overlay */}
+      <div className={`loader-overlay ${!isLoading ? 'fade-out' : ''}`}>
+        <Loader2 className="spinner" size={48} />
+        <div className="logo" style={{ fontSize: '1.5rem', marginTop: '16px' }}>
+          Build<span style={{ color: 'var(--accent)' }}>View</span>
+        </div>
+      </div>
+
       <div 
         className="parallax-bg" 
         style={{ transform: `translateY(-${Math.min(scrollY * 0.15, window.innerHeight * 0.2)}px)` }}
